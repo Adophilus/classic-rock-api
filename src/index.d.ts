@@ -1,0 +1,3 @@
+interface ILogMessage {
+  message: string
+}
