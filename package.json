@@ -6,6 +6,7 @@
 		"build": "ttsc",
 		"dev": "nodemon",
 		"test": "mocha",
+		"test:watch": "nodemon --config nodemon.test.json",
 		"start": "node ./build/src/run"
 	},
 	"devDependencies": {

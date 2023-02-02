@@ -1,5 +1,5 @@
 {
-  "watch": ["src", "tests"],
+  "watch": ["src"],
   "ext": "ts,json",
   "exec": "pnpm build && pnpm start"
 }

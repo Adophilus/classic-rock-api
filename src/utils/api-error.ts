@@ -1,9 +1,10 @@
-import { StatusCodes } from 'http-status-codes'
+import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 
 export default class APIError extends Error {
   statusCode = StatusCodes.INTERNAL_SERVER_ERROR
+  message = ReasonPhrases.INTERNAL_SERVER_ERROR
 
-  constructor(message: string) {
+  constructor(message?: string) {
     super(message)
   }
 }

@@ -2,7 +2,6 @@ import { Sequelize } from 'sequelize-typescript'
 import config from '@/config'
 import { Song } from '@/models'
 import { Logger } from 'tslog'
-import { Dialect } from 'sequelize'
 
 export default {
   init(logger: Logger<ILogMessage>) {
