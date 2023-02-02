@@ -8,6 +8,7 @@ import Database from "@/config/sequelize"
 import APIError from "./utils/api-error";
 import { Request, Response } from "express";
 import { Sequelize } from 'sequelize-typescript'
+
 export default class AppServer extends Server {
   private readonly logger = new Logger<ILogMessage>({ name: "ClassicRock" });
   private db!: Sequelize;

@@ -1,8 +1,7 @@
 import {
-  Column,
   Model,
-  PrimaryKey,
-  Table
+  Table,
+  Column
 } from "sequelize-typescript";
 
 @Table({
@@ -10,22 +9,21 @@ import {
   timestamps: false
 })
 export default class Song extends Model {
-  @PrimaryKey
   @Column
-  public music!: string;
+  music!: string;
 
   @Column
-  public artist!: string;
+  artist!: string;
 
   @Column
-  public album!: string;
+  album!: string;
 
   @Column
-  public release_year!: number;
+  release_year!: number;
 
   @Column
-  public genre!: string;
+  genre!: string;
 
   @Column
-  public is_banned!: boolean
+  is_banned!: boolean
 }

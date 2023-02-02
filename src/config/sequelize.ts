@@ -6,6 +6,7 @@ import { Logger } from 'tslog'
 export default {
   init(logger: Logger<ILogMessage>) {
     return new Sequelize(config.db.uri, config.db.username, config.db.password, {
+      storage: config.db.path,
       dialect: config.db.dialect,
       models: [
         Song

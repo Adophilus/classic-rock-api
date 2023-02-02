@@ -1,5 +1,7 @@
 from sqlalchemy import (
     Boolean,
+    Identity,
+    Integer,
     create_engine,
     String,
     Column,
@@ -19,8 +21,9 @@ Base = declarative_base()
 class Song(Base):
     __tablename__ = "songs"
 
-    music = Column(String, primary_key=True)
-    artist = Column(String)
+    id = Column(Integer, Identity(start=1, cycle=True), primary_key=True)
+    music = Column(String, nullable=False)
+    artist = Column(String, nullable=False)
     album = Column(String, nullable=False)
     release_year = Column(String, nullable=False)
     genre = Column(String, nullable=False)

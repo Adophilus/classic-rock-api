@@ -12,7 +12,8 @@ class SongNotFoundError extends APIError {
 
 export default class SongsRepository {
   public static async getAll() {
-    return await Song.findAll()
+    const songs = await Song.findAll()
+    return songs
   }
 
   public static async getById(id: number) {

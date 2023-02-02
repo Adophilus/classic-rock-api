@@ -33,8 +33,9 @@ export default class Song {
   private async getSongBannedStatus(req: Request, res: Response) {
     const { id } = req.params
     const song = await SongsRepository.getById(parseInt(id))
-    res.status(StatusCodes.OK).send(song.is_banned)
+    res.status(StatusCodes.OK).json({ is_banned: song.is_banned })
   }
+
   @Put(':id/ban')
   private async banSongById(req: Request, res: Response) {
     const { id } = req.params
