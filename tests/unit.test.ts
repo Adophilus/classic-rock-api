@@ -15,7 +15,7 @@ describe('Classic Rock', () => {
           expect(status).to.equal(200)
           expect(body).to.have.lengthOf.above(50)
 
-          songId = body[0].id
+          songId = body[Math.floor(Math.random() * body.length)].id
 
           done()
         })

@@ -31,7 +31,7 @@ export default class AppServer extends Server {
 
   public setupControllers() {
     const props = {
-      logger: this.logger.getSubLogger(),
+      logger: this.logger.getSubLogger({ name: "controller" }),
     };
     super.addControllers([new SongController(props)]);
   }

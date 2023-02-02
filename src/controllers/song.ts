@@ -19,20 +19,20 @@ export default class Song {
   @Get()
   private async getSongs(req: Request, res: Response) {
     const songs = await SongsRepository.getAll()
-    res.status(StatusCodes.OK).send(songs)
+    res.status(StatusCodes.OK).json(songs)
   }
 
   @Get(':id')
   private async getSongById(req: Request, res: Response) {
     const { id } = req.params
     const song = await SongsRepository.getById(parseInt(id))
-    res.status(StatusCodes.OK).send(song)
+    res.status(StatusCodes.OK).json(song.toJSON())
   }
 
   @Put(':id/banned')
   private async getSongBannedStatus(req: Request, res: Response) {
     const { id } = req.params
-    const song = await SongsRepository.getById(parseInt(id))
+    const song = (await SongsRepository.getById(parseInt(id))).toJSON()
     res.status(StatusCodes.OK).json({ is_banned: song.is_banned })
   }
 
