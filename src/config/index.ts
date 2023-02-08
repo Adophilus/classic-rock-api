@@ -10,7 +10,7 @@ const config = {
     port: process.env.PORT ? parseInt(process.env.PORT) : 3000
   },
   db: {
-    uri: process.env.DB_URI ? process.env.DB_URI : "sqlite::memory:",
+    uri: process.env.DB_URI ? process.env.DB_URI : "sqlite:///db.sqlite3",
     path: process.env.DB_PATH ? process.env.DB_PATH : "",
     dialect: process.env.DB_DIALECT ? String(process.env.DB_DIALECT) as Dialect : defaultDialect,
     username: process.env.DB_USERNAME ? String(process.env.DB_USERNAME) : "",
