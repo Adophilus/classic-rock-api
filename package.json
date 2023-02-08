@@ -2,6 +2,7 @@
 	"name": "classic-rock",
 	"private": true,
 	"version": "0.0.0",
+	"main": "./build/src/server.js",
 	"scripts": {
 		"build:all": "./bin/build-all.sh",
 		"build": "ttsc",
