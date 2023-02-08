@@ -9,7 +9,8 @@
 		"dev": "nodemon",
 		"test": "mocha",
 		"test:watch": "nodemon --config nodemon.test.json",
-		"start": "node ./build/src/run"
+		"start": "node ./build/src/run",
+		"project:setup": "echo all good to go 😁"
 	},
 	"devDependencies": {
 		"@build-script/typescript-transformer-dual-package": "^2.0.4",
