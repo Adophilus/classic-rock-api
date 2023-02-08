@@ -10,20 +10,20 @@ import {
 })
 export default class Song extends Model {
   @Column
-  music!: string;
+  declare public music: string;
 
   @Column
-  artist!: string;
+  declare public artist: string;
 
   @Column
-  album!: string;
+  declare public album: string;
 
   @Column
-  release_year!: number;
+  declare public release_year: number;
 
   @Column
-  genre!: string;
+  declare public genre: string;
 
   @Column
-  is_banned!: boolean
+  declare public is_banned: boolean;
 }

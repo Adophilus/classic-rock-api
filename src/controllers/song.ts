@@ -1,10 +1,12 @@
-import { Controller, Get, Put } from '@overnightjs/core'
+import ExpressAsyncHandler from 'express-async-handler';
+import { Controller, Get, Put, ClassWrapper, Wrapper } from '@overnightjs/core'
 import { Request, Response } from 'express'
 import { StatusCodes } from 'http-status-codes'
 import { Logger } from 'tslog'
 import SongsRepository from "@/repositories/song"
 
 @Controller('songs')
+@ClassWrapper(ExpressAsyncHandler)
 export default class Song {
   private readonly logger: Logger<ILogMessage>
 
@@ -26,13 +28,13 @@ export default class Song {
   private async getSongById(req: Request, res: Response) {
     const { id } = req.params
     const song = await SongsRepository.getById(parseInt(id))
-    res.status(StatusCodes.OK).json(song.toJSON())
+    res.status(StatusCodes.OK).json(song)
   }
 
   @Put(':id/banned')
   private async getSongBannedStatus(req: Request, res: Response) {
     const { id } = req.params
-    const song = (await SongsRepository.getById(parseInt(id))).toJSON()
+    const song = await SongsRepository.getById(parseInt(id))
     res.status(StatusCodes.OK).json({ is_banned: song.is_banned })
   }
 

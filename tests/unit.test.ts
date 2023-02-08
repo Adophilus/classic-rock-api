@@ -22,6 +22,32 @@ describe('Classic Rock', () => {
         .catch(err => console.log(err))
     })
 
+    test('should not be able to fetch a non-existent song by id', (done) => {
+      client
+        .get(`/songs/${songId + 1000}`)
+        .then(res => {
+          const { status, body } = res
+
+          expect(status).to.equal(404)
+
+          done()
+        })
+        .catch(err => console.log(err))
+    })
+
+    test('should fetch a song by id', (done) => {
+      client
+        .get(`/songs/${songId}`)
+        .then(res => {
+          const { status } = res
+
+          expect(status).to.equal(200)
+
+          done()
+        })
+        .catch(err => console.log(err))
+    })
+
     test('should ensure that a song is not banned', (done) => {
       client
         .put(`/songs/${songId}/banned`)

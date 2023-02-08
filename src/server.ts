@@ -6,7 +6,7 @@ import morgan from "morgan";
 import { Logger } from "tslog";
 import Database from "@/config/sequelize"
 import APIError from "./utils/api-error";
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { Sequelize } from 'sequelize-typescript'
 
 export default class AppServer extends Server {
@@ -37,11 +37,11 @@ export default class AppServer extends Server {
   }
 
   public setupErrorHandler() {
-    this.app.use((err: Error, req: Request, res: Response) => {
-      let apiError = new APIError(err.message)
-      if (err instanceof APIError)
-        apiError = err
-      return res.status(apiError.statusCode).send(apiError.message)
+    this.app.use(async (err: Error, req: Request, res: Response, next: NextFunction) => {
+      if (!(err instanceof APIError))
+        return next(err)
+      this.logger.error(err)
+      return res.status(err.statusCode).json(err)
     })
   }
 
