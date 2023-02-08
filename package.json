@@ -4,7 +4,7 @@
 	"version": "0.0.0",
 	"main": "./build/src/server.js",
 	"scripts": {
-		"build:all": "./bin/build-all.sh",
+		"build:all": "bash ./bin/build-all.sh",
 		"build": "ttsc",
 		"dev": "nodemon",
 		"test": "mocha",
