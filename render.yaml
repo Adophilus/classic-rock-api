@@ -1,4 +1,0 @@
-services:
-  - type: web
-    name: classic-rock-api 
-    env: docker

@@ -3,6 +3,7 @@
 	"private": true,
 	"version": "0.0.0",
 	"scripts": {
+		"build:all": "./bin/build-all.sh",
 		"build": "ttsc",
 		"dev": "nodemon",
 		"test": "mocha",
