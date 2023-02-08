@@ -26,6 +26,8 @@ jobs:
       build-script: build:all
       artifact-name: workspace
       base-url: /${{ github.event.repository.name }}/
+      path: |
+        !.venv
     secrets:
       SERVER_DEPLOY_PATH: ${{ secrets.SERVER_DEPLOY_PATH }}
       SSH_HOST: ${{ secrets.SSH_HOST }}
