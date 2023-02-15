@@ -1,6 +1,7 @@
 import { client } from '#/setup'
 import { describe, test } from 'mocha'
 import { expect } from 'chai'
+import { StatusCodes } from 'http-status-codes'
 
 describe('Classic Rock', () => {
   let songId = ''
@@ -12,7 +13,7 @@ describe('Classic Rock', () => {
         .then(res => {
           const { status, body } = res
 
-          expect(status).to.equal(200)
+          expect(status).to.equal(StatusCodes.OK)
           expect(body).to.have.lengthOf.above(50)
 
           songId = body[Math.floor(Math.random() * body.length)].id
@@ -41,7 +42,7 @@ describe('Classic Rock', () => {
         .then(res => {
           const { status } = res
 
-          expect(status).to.equal(200)
+          expect(status).to.equal(StatusCodes.OK)
 
           done()
         })
@@ -54,7 +55,7 @@ describe('Classic Rock', () => {
         .then(res => {
           const { status, body } = res
 
-          expect(status).to.equal(200)
+          expect(status).to.equal(StatusCodes.OK)
           expect(body).to.have.property('is_banned', false)
 
           done()
@@ -68,7 +69,7 @@ describe('Classic Rock', () => {
         .then(res => {
           const { status } = res
 
-          expect(status).to.equal(204)
+          expect(status).to.equal(StatusCodes.NO_CONTENT)
 
           done()
         })
@@ -81,7 +82,7 @@ describe('Classic Rock', () => {
         .then(res => {
           const { status, body } = res
 
-          expect(status).to.equal(200)
+          expect(status).to.equal(StatusCodes.OK)
           expect(body).to.have.property('is_banned', true)
 
           done()
@@ -95,7 +96,7 @@ describe('Classic Rock', () => {
         .then(res => {
           const { status } = res
 
-          expect(status).to.equal(204)
+          expect(status).to.equal(StatusCodes.NO_CONTENT)
 
           done()
         })
@@ -108,8 +109,21 @@ describe('Classic Rock', () => {
         .then(res => {
           const { status, body } = res
 
-          expect(status).to.equal(200)
+          expect(status).to.equal(StatusCodes.OK)
           expect(body).to.have.property('is_banned', false)
+
+          done()
+        })
+        .catch(err => console.log(err))
+    })
+
+    test('should delete a song by id', (done) => {
+      client
+        .delete(`/songs/${songId}`)
+        .then(res => {
+          const { status, body } = res
+
+          expect(status).to.equal(StatusCodes.GONE)
 
           done()
         })
