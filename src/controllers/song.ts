@@ -1,5 +1,5 @@
 import ExpressAsyncHandler from 'express-async-handler';
-import { Controller, Get, Put, ClassWrapper, Wrapper } from '@overnightjs/core'
+import { Controller, Get, Put, ClassWrapper, Wrapper, Delete } from '@overnightjs/core'
 import { Request, Response } from 'express'
 import { StatusCodes } from 'http-status-codes'
 import { Logger } from 'tslog'
@@ -52,5 +52,13 @@ export default class Song {
     const song = await SongsRepository.getById(parseInt(id))
     await song.update({ is_banned: false })
     res.status(StatusCodes.NO_CONTENT).send()
+  }
+
+  @Delete(':id')
+  private async deleteSongById(req: Request, res: Response) {
+    const { id } = req.params
+    const song = await SongsRepository.getById(parseInt(id))
+    await song.destroy()
+    res.status(StatusCodes.GONE).send()
   }
 }
