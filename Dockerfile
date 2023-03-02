@@ -6,7 +6,7 @@ RUN apk add python3
 RUN apk add nodejs
 RUN apk add npm
 
-RUN [ "/bin/bash", "-c", "curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm" ]
+RUN npm install -g pnpm
 
 COPY . .
 RUN pnpm install --frozen-lockfile --prod
