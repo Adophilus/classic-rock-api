@@ -12,6 +12,8 @@ COPY . .
 RUN pnpm install --frozen-lockfile --prod
 
 RUN pnpm project:setup
+RUN echo $PWD
+RUN pnpm project:setup
 RUN pnpm build:all
 
 CMD pnpm start
