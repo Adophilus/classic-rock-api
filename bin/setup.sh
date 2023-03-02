@@ -1,10 +1,12 @@
 #! /usr/bin/env bash
 
-apt-get update -y
-apt-get upgrade -y
-apt-get install -y python3 python3-pip
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.4
+echo '. $HOME/.asdf/asdf.sh' >> ~/.bashrc
+echo '. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc
+source ~/.bashrc
 
-python3 --version
+asdf plugin-add python
+asdf install python 3.11.1
 
 # python3 -m venv .venv
 # source .venv/bin/activate
