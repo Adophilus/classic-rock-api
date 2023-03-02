@@ -6,6 +6,7 @@
 	"scripts": {
 		"build:all": "bash ./bin/build-all.sh",
 		"build": "ttsc",
+		"build:db": "python3 -m scripts.serializer",
 		"dev": "nodemon",
 		"test": "mocha",
 		"test:watch": "nodemon --config nodemon.test.json",
