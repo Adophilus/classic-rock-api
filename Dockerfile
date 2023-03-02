@@ -1,5 +1,6 @@
 FROM alpine:3.14
 
+RUN apk add bash
 RUN ["/bin/bash", "-c", "apk add --no-cache python3 python3-pip" ]
 RUN apk add --no-cache nodejs npm
 
