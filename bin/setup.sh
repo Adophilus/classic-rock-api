@@ -10,8 +10,8 @@ asdf plugin-add python
 asdf install python 3.11.1
 asdf global python 3.11.1
 
-# python3 -m venv .venv
-# source .venv/bin/activate
+python3 -m venv .venv
+source .venv/bin/activate
 
 pip3 install -r requirements.txt
 
