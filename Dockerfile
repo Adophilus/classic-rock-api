@@ -1,8 +1,6 @@
 FROM alpine:3.14
 
-RUN apk add bash
-RUN ["/bin/bash", "-c", "apk add --no-cache python3 python3-pip" ]
-RUN apk add --no-cache nodejs npm
+RUN apk add python3 python3-pip nodejs npm
 
 RUN curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
 
